@@ -241,6 +241,10 @@ const Login = ({ onLogin, API_URL = DEFAULT_API_URL }) => {
               </Link>
             </p>
           </div>
+
+          <p className="text-center text-xs text-gray-400 mt-6 pb-2">
+            Developed by <span className="font-medium text-gray-600">Shivam Gupta</span>
+          </p>
         </div>
       </div>
     </div>
