@@ -130,8 +130,10 @@ export async function downloadIncomeExcel(req, res) {
         const worksheet = XLSX.utils.json_to_sheet(plainData);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "incomeModel");
-        XLSX.writeFile(workbook, "income_details.xlsx");
-        res.download("income_details.xlsx");
+        const buffer = XLSX.write(workbook, { bookType: "xlsx", type: "buffer" });
+        res.setHeader("Content-Disposition", "attachment; filename=income_details.xlsx");
+        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        return res.send(buffer);
     }
 
     catch (error) {

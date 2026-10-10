@@ -9,7 +9,7 @@ import expenseRouter from './routes/expenseRoute.js';
 import dashboardRouter from './routes/dashboardRoute.js';
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // MIDDLEWARES
 app.use(cors());
@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
     res.send("API WORKING");
 });
 
-app.listen(port, () => {
-    console.log(`Server Started on http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+    app.listen(port, () => {
+        console.log(`Server Started on http://localhost:${port}`);
+    });
+}
+
+export default app;

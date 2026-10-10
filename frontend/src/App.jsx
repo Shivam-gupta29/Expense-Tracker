@@ -14,8 +14,7 @@ import axios from "axios";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Profile from "./pages/Profile";
-
-const API_URL = "http://localhost:4000";
+import { API_URL } from "./config/api";
 
 // to get transaction from localstorage
 const getTransactionsFromStorage = () => {
